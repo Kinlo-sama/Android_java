@@ -18,45 +18,75 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.134" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/viewconn"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:visibility="gone">
+        android:id="@+id/viewconn"
 
-        <TextView
-            android:id="@+id/vacio"
-            android:layout_width="match_parent"
-            android:layout_height="138dp" />
+        <ImageButton
+            android:id="@+id/retroceso"
+            android:layout_width="117dp"
+            android:layout_height="101dp"
+            android:rotation="270"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.909"
+            app:srcCompat="@drawable/_51451_200" />
 
-        <Button
-            android:id="@+id/avanzar"
-            android:layout_width="302dp"
-            android:layout_height="104dp"
-            android:layout_gravity="center"
-            android:text="AVANZAR" />
-
-        <Button
-            android:id="@+id/retroceder"
-            android:layout_width="297dp"
-            android:layout_height="104dp"
-            android:layout_gravity="center"
-            android:text="RETROCEDER" />
-
-        <Button
+        <ImageButton
             android:id="@+id/izquierda"
-            android:layout_width="290dp"
-            android:layout_height="104dp"
-            android:layout_gravity="center"
-            android:text="IZQUIERDA" />
+            android:layout_width="117dp"
+            android:layout_height="101dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.054"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.73"
+            app:srcCompat="@drawable/_51451_200" />
 
-        <Button
+        <ImageButton
+            android:id="@+id/avance"
+            android:layout_width="117dp"
+            android:layout_height="101dp"
+            android:longClickable="true"
+            android:rotation="90"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.541"
+            app:srcCompat="@drawable/_51451_200" />
+
+        <ImageButton
             android:id="@+id/derecha"
-            android:layout_width="292dp"
-            android:layout_height="104dp"
-            android:layout_gravity="center"
-            android:text="DERECHA" />
+            android:layout_width="117dp"
+            android:layout_height="101dp"
+            android:rotation="180"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.945"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.73"
+            app:srcCompat="@drawable/_51451_200" />
 
-    </LinearLayout>
+        <ImageButton
+            android:id="@+id/freno"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.728"
+            app:srcCompat="@drawable/brake_disc_icon_disc_brake_icon_brake_pads_brakes_vector_removebg_preview" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </LinearLayout>

@@ -5,6 +5,7 @@ package com.example.carro_adroid;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Build;
@@ -14,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -26,24 +28,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
     BluJhr blue;
     List<String> requiredPermissions;
     ArrayList<String> devicesBluetooth = new ArrayList<String>();
     ListView listDeviceBluetooth;
-    Button avanzar,retroceder,izquierda,derecha;
-    LinearLayout viewConn;
-
+    ImageButton avance,retroceso,izquierda,derecha,freno;
+    ConstraintLayout viewConn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);        blue = new BluJhr(this);
         blue.onBluetooth();
         listDeviceBluetooth = findViewById(R.id.listDeviceBlu);
-        avanzar = findViewById(R.id.avanzar);
-        retroceder = findViewById(R.id.retroceder);
+        avance = findViewById(R.id.avance);
+        retroceso = findViewById(R.id.retroceso);
         izquierda = findViewById(R.id.izquierda);
         derecha = findViewById(R.id.derecha);
+        freno = findViewById(R.id.freno);
+
+
         viewConn = findViewById(R.id.viewconn);
 
         listDeviceBluetooth.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -58,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(),"True",Toast.LENGTH_SHORT).show();
                                 listDeviceBluetooth.setVisibility(View.GONE);
                                 viewConn.setVisibility(View.VISIBLE);
-                                rxReceived();
+                                //rxReceived();
+                                blue.bluTx("Conexion");
                             }else{
                                 if (connected == BluJhr.Connected.Pending){
                                     Toast.makeText(getApplicationContext(),"Pending",Toast.LENGTH_SHORT).show();
@@ -79,41 +83,47 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        avanzar.setOnLongClickListener(new View.OnLongClickListener() {
+        avance.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View view) {
-                //Comentada por si me ayuda despues
-                //blue.closeConnection();
-                //String miTexto = "B";
+            public void onClick(View view) {
+                blue.bluTx("A");
+            }
+        });
+        retroceso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String miTexto = "R";
                 //edtTx.setText(miTexto);
-                //blue.bluTx(edtTx.getText().toString());
-                return false;
+                blue.bluTx(miTexto);
             }
         });
-        retroceder.setOnLongClickListener(new View.OnLongClickListener() {
+        freno.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View view) {
-
-                return false;
+            public void onClick(View view) {
+                String miTexto = "S";
+                //edtTx.setText(miTexto);
+                blue.bluTx(miTexto);
             }
         });
-        izquierda.setOnLongClickListener(new View.OnLongClickListener() {
+        izquierda.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View view) {
-
-                return false;
+            public void onClick(View view) {
+                String miTexto = "I";
+                //edtTx.setText(miTexto);
+                blue.bluTx(miTexto);
             }
         });
-        derecha.setOnLongClickListener(new View.OnLongClickListener() {
+        derecha.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View view) {
-
-                return false;
+            public void onClick(View view) {
+                String miTexto = "D";
+                //edtTx.setText(miTexto);
+                blue.bluTx(miTexto);
             }
         });
     }
 
-
+//Para este caso no hace falta este metodo
     private void rxReceived() {
 
         blue.loadDateRx(new BluJhr.ReceivedData() {

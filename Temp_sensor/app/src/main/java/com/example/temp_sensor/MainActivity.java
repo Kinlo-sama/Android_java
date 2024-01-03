@@ -32,12 +32,14 @@ public class MainActivity extends AppCompatActivity {
     ListView listDeviceBluetooth;
     TextView consola;
     LinearLayout viewConn;
-    ImageView imagenLejos;
+    ImageView imagenLejos;//imagen cuando haya temperatura
     ImageView imagenCerca;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);        blue = new BluJhr(this);
+        setContentView(R.layout.activity_main);
+        //
+        blue = new BluJhr(this);
         blue.onBluetooth();
         listDeviceBluetooth = findViewById(R.id.listDeviceBlu);
         imagenLejos = findViewById(R.id.lejos);
@@ -90,12 +92,12 @@ public class MainActivity extends AppCompatActivity {
                 consola.setText(s);
                 int numero = Integer.parseInt(s);
                 if(numero > 30){
-                    imagenLejos.setVisibility(View.GONE);
-                    imagenCerca.setVisibility(View.VISIBLE);
+                    imagenLejos.setVisibility(View.GONE);//normal
+                    imagenCerca.setVisibility(View.VISIBLE);//chica que esta ardiendo
                 }
                 else{
-                    imagenLejos.setVisibility(View.VISIBLE);
-                    imagenCerca.setVisibility(View.GONE);
+                    imagenLejos.setVisibility(View.VISIBLE);//normal
+                    imagenCerca.setVisibility(View.GONE);//chica que esta ardiendo
                 }
             }
         });

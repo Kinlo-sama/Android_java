@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         blue.loadDateRx(new BluJhr.ReceivedData() {
             @Override
             public void rxDate(@NonNull String s) {
-                consola.setText(s);
+                consola.setText("Distancia total:" + s);
                 int numero = Integer.parseInt(s);
                 if(numero < 10){
                     imagenLejos.setVisibility(View.GONE);
